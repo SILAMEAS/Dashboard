@@ -13,12 +13,12 @@ import Badge from '@mui/material/Badge';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightTwoToneIcon from '@mui/icons-material/ChevronRightTwoTone';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import {mainListItems} from './listItems';
 import {useEffect} from 'react';
-import Home from '../pages/test/Home';
-import Reports from '../pages/test/Reports';
 import {Outlet} from 'react-router-dom';
+
 
 function Copyright(props: any) {
   return (
@@ -141,7 +141,8 @@ export default function DashboardContent({ResizeWindow}: any) {
         <Drawer
           variant="permanent"
           open={open}
-          sx={{position: 'absolute', top: 0, left: 0}}>
+          sx={{position: 'absolute', top: 50, left: 0}}>
+          <List component="nav">{mainListItems}</List>
           <Toolbar
             sx={{
               display: 'flex',
@@ -150,11 +151,16 @@ export default function DashboardContent({ResizeWindow}: any) {
               px: [1],
             }}>
             <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
+              {
+                open?  <ChevronLeftIcon />:<ChevronRightTwoToneIcon />
+
+              }
+
+
             </IconButton>
           </Toolbar>
           <Divider />
-          <List component="nav">{mainListItems}</List>
+
         </Drawer>
       </Box>
       <Box

@@ -12,9 +12,11 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
 import {Type} from './Type';
+import MyRoute from "../myRouteCustom/MyRoute";
+import {Constant} from "../../constant/ConstantVaraible";
 
 export default function NestedList({Data}:Type) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
@@ -25,18 +27,6 @@ export default function NestedList({Data}:Type) {
       sx={{width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}
       component="nav"
       aria-labelledby="nested-list-subheader">
-      {/*<ListItemButton>*/}
-      {/*  <ListItemIcon>*/}
-      {/*    <SendIcon />*/}
-      {/*  </ListItemIcon>*/}
-      {/*  <ListItemText primary="Sent mail" />*/}
-      {/*</ListItemButton>*/}
-      {/*<ListItemButton>*/}
-      {/*  <ListItemIcon>*/}
-      {/*    <DraftsIcon />*/}
-      {/*  </ListItemIcon>*/}
-      {/*  <ListItemText primary="Drafts" />*/}
-      {/*</ListItemButton>*/}
       {Data}
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
@@ -47,13 +37,9 @@ export default function NestedList({Data}:Type) {
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{pl: 4}}>
-            <ListItemIcon>
-              <StarBorder />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
+          <MyRoute goto={Constant.DASHBOARD} listName={"Starred"} listIcon={ <StarBorder />}/>
         </List>
+
       </Collapse>
     </List>
   );

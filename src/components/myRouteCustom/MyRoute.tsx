@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {NavLink} from 'react-router-dom';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import ListItemText from '@mui/material/ListItemText';
-import {Type} from './Type';
+
+import MyNestRoute from './MyNestRoute';
+interface Type {
+  goto: string;
+  listName: string;
+  listIcon: ReactNode;
+}
 
 function MyRoute({listIcon = <BarChartIcon />, listName, goto}: Type) {
   return (
@@ -16,5 +22,4 @@ function MyRoute({listIcon = <BarChartIcon />, listName, goto}: Type) {
     </NavLink>
   );
 }
-
 export default MyRoute;
