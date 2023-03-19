@@ -25,9 +25,25 @@ export const mainListItems = (
           listIcon={<ShoppingCartIcon />}
           child={
             <MyNestRoute
-              goto={Constant.CUSTOMERS}
-              listName={'Customers'}
-              listIcon={<PeopleIcon />}
+              IsNested={true}
+              goto={Constant.ORDERS}
+              listName={'Orders'}
+              listIcon={<ShoppingCartIcon />}
+              child={
+                <MyNestRoute
+                  IsNested={true}
+                  goto={Constant.ORDERS}
+                  listName={'Orders'}
+                  listIcon={<ShoppingCartIcon />}
+                  child={
+                    <MyNestRoute
+                      goto={Constant.CUSTOMERS}
+                      listName={'Customers'}
+                      listIcon={<PeopleIcon />}
+                    />
+                  }
+                />
+              }
             />
           }
         />
@@ -45,6 +61,35 @@ export const mainListItems = (
             listName={'REPORTS'}
             listIcon={<BarChartIcon />}
           />
+          <MyNestRoute
+            IsNested={true}
+            goto={Constant.ORDERS}
+            listName={'Orders'}
+            listIcon={<ShoppingCartIcon />}
+            child={
+              <MyNestRoute
+                IsNested={true}
+                goto={Constant.ORDERS}
+                listName={'Orders'}
+                listIcon={<ShoppingCartIcon />}
+                child={
+                  <MyNestRoute
+                    IsNested={true}
+                    goto={Constant.ORDERS}
+                    listName={'Orders'}
+                    listIcon={<ShoppingCartIcon />}
+                    child={
+                      <MyNestRoute
+                        goto={Constant.CUSTOMERS}
+                        listName={'Customers'}
+                        listIcon={<PeopleIcon />}
+                      />
+                    }
+                  />
+                }
+              />
+            }
+          />
           <MyRoute
             goto={Constant.REPORTS}
             listName={'REPORTS'}
@@ -52,6 +97,11 @@ export const mainListItems = (
           />
         </>
       }
+    />
+    <MyNestRoute
+      goto={Constant.ORDERS}
+      listName={'Orders'}
+      listIcon={<ShoppingCartIcon />}
     />
   </React.Fragment>
 );
